@@ -1,0 +1,97 @@
+JFDML JFormDesigner: "7.0.0.6.255" Java: "11.0.4" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {space :::x, par l {seq t {comp panel1:::p::p, space s:::p, comp table1:::p:458:p, space :p:33:p}, seq t {comp bookingtitle:::p::p, space :p:307:p}}}}"
+			"$verticalGroup": "par l {seq l {space :p:19:p, comp bookingtitle:::p::p, space :p:58:p, par l {comp table1:::p:305:p, comp panel1:::p::p}, space ::121:x}}"
+		} ) {
+			name: "this"
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "bookingtitle"
+				"text": "Offender Booking"
+				"font": new java.awt.Font( "Times New Roman", 1, 20 )
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq t {par t {seq {space :p:16:p, par t {comp label4::l:p::p, comp label2::l:p::p, comp label1::l:p::p, comp label3::l:p::p}, space :::p, par t:::p {comp textdob::l::149:x, comp textlno::l:::x, comp textname::l:::x, comp textaddr:::::x}, space :0:38:x}, seq {space :p:27:p, comp button1:::p::p, space ::16:x, comp button2:::p::p, space ::17:x, comp button3:::p::p}}, space ::16:x}}"
+				"$verticalGroup": "par l {seq l {space :p:22:p, par l {comp label1:::p:16:p, comp textname:::p::p}, space :p:18:p, par l {comp label2:::p::p, comp textlno:::p::p}, space :p:18:p, par l {comp label3:::p::p, comp textdob:::p::p}, par l {seq {space :p:25:p, comp label4:::p::p}, seq l {space s:::p, comp textaddr:::p::p}}, space ::32:x, par l {comp button1:::p::p, par b {comp button3::b:p::p, comp button2::b:p::p}}, space :p:31:p}}"
+			} ) {
+				name: "panel1"
+				"border": new javax.swing.border.TitledBorder( null, "Book Offender", 4, 0, new java.awt.Font( "Courier New", 0, 14 ), null )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label1"
+					"text": "Name"
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label2"
+					"text": "License Number"
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label3"
+					"text": "DOB"
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "textname"
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "textlno"
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "textdob"
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button1"
+					"text": "Add"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button2"
+					"text": "Delete"
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button3"
+					"text": "Edit"
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label4"
+					"text": "Address"
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "textaddr"
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JTable" ) {
+				name: "table1"
+				"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector, new java.util.Vector {
+					add( "ID" )
+					add( "Name" )
+					add( "License No." )
+					add( "DOB" )
+					add( "Address" )
+				}, new java.util.Vector {
+					add( class java.lang.Integer )
+					add( class java.lang.String )
+					add( class java.lang.String )
+					add( class java.lang.String )
+					add( class java.lang.String )
+				}, new java.util.Vector {
+					add( null )
+					add( null )
+					add( null )
+					add( null )
+					add( null )
+				}, new java.util.Vector {
+					add( null )
+					add( null )
+					add( null )
+					add( null )
+					add( null )
+				} )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 50, 55 )
+			"size": new java.awt.Dimension( 835, 535 )
+		} )
+	}
+}
