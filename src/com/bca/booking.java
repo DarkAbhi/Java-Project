@@ -98,6 +98,20 @@ public class booking {
         }
     }
 
+    private void scrollPane1MouseClicked(MouseEvent e) {
+        // TODO add your code here
+    }
+
+    private void table1MouseClicked(MouseEvent e) {
+        DefaultTableModel DFTM = (DefaultTableModel)table1.getModel();
+        int selectedIndex = table1.getSelectedRow();
+
+        textname.setText(DFTM.getValueAt(selectedIndex,1).toString());
+        textlno.setText(DFTM.getValueAt(selectedIndex,2).toString());
+        textdob.setText(DFTM.getValueAt(selectedIndex,3).toString());
+        textaddr.setText(DFTM.getValueAt(selectedIndex,4).toString());
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - unknown
@@ -120,11 +134,12 @@ public class booking {
 
         //======== abcpanel ========
         {
-            abcpanel.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder (
-            0, 0 ,0 , 0) ,  "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder
-            . BOTTOM, new java. awt .Font ( "D\u0069al\u006fg", java .awt . Font. BOLD ,12 ) ,java . awt. Color .
-            red ) ,abcpanel. getBorder () ) ); abcpanel. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java .
-            beans. PropertyChangeEvent e) { if( "\u0062or\u0064er" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+            abcpanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
+            EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax. swing
+            . border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ),
+            java. awt. Color. red) ,abcpanel. getBorder( )) ); abcpanel. addPropertyChangeListener (new java. beans. PropertyChangeListener( )
+            { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () ))
+            throw new RuntimeException( ); }} );
 
             //---- bookingtitle ----
             bookingtitle.setText("Offender Booking");
@@ -220,6 +235,12 @@ public class booking {
 
             //======== scrollPane1 ========
             {
+                scrollPane1.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        scrollPane1MouseClicked(e);
+                    }
+                });
 
                 //---- table1 ----
                 table1.setModel(new DefaultTableModel(
@@ -235,6 +256,12 @@ public class booking {
                     @Override
                     public Class<?> getColumnClass(int columnIndex) {
                         return columnTypes[columnIndex];
+                    }
+                });
+                table1.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        table1MouseClicked(e);
                     }
                 });
                 scrollPane1.setViewportView(table1);
