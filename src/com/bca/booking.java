@@ -16,7 +16,7 @@ import javax.swing.table.*;
 /**
  * @author Abhishek AN
  */
-public class booking extends JPanel {
+public class booking {
     public booking() {
         initComponents();
         table_update();
@@ -84,7 +84,8 @@ public class booking extends JPanel {
             insert.setString(4,address);
             insert.executeUpdate();
 
-            JOptionPane.showMessageDialog(this,"Record Added");
+            JOptionPane.showMessageDialog(abcpanel,"Record Added");
+            table_update();
 
             textname.setText("");
             textlno.setText("");
@@ -100,6 +101,7 @@ public class booking extends JPanel {
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - unknown
+        abcpanel = new JPanel();
         bookingtitle = new JLabel();
         panel1 = new JPanel();
         label1 = new JLabel();
@@ -115,155 +117,154 @@ public class booking extends JPanel {
         textaddr = new JTextField();
         table1 = new JTable();
 
-        //======== this ========
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
-        . EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax
-        . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,
-        12 ), java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans
-        . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .
-        getPropertyName () )) throw new RuntimeException( ); }} );
-
-        //---- bookingtitle ----
-        bookingtitle.setText("Offender Booking");
-        bookingtitle.setFont(new Font("Times New Roman", Font.BOLD, 20));
-
-        //======== panel1 ========
+        //======== abcpanel ========
         {
-            panel1.setBorder(new TitledBorder(null, "Book Offender", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION,
-                new Font("Courier New", Font.PLAIN, 14)));
+            abcpanel.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder (
+            0, 0 ,0 , 0) ,  "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder
+            . BOTTOM, new java. awt .Font ( "D\u0069al\u006fg", java .awt . Font. BOLD ,12 ) ,java . awt. Color .
+            red ) ,abcpanel. getBorder () ) ); abcpanel. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java .
+            beans. PropertyChangeEvent e) { if( "\u0062or\u0064er" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
 
-            //---- label1 ----
-            label1.setText("Name");
+            //---- bookingtitle ----
+            bookingtitle.setText("Offender Booking");
+            bookingtitle.setFont(new Font("Times New Roman", Font.BOLD, 20));
 
-            //---- label2 ----
-            label2.setText("License Number");
+            //======== panel1 ========
+            {
+                panel1.setBorder(new TitledBorder(null, "Book Offender", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION,
+                    new Font("Courier New", Font.PLAIN, 14)));
 
-            //---- label3 ----
-            label3.setText("DOB");
+                //---- label1 ----
+                label1.setText("Name");
 
-            //---- button1 ----
-            button1.setText("Add");
-            button1.addActionListener(e -> button1ActionPerformed(e));
+                //---- label2 ----
+                label2.setText("License Number");
 
-            //---- button2 ----
-            button2.setText("Delete");
+                //---- label3 ----
+                label3.setText("DOB");
 
-            //---- button3 ----
-            button3.setText("Edit");
+                //---- button1 ----
+                button1.setText("Add");
+                button1.addActionListener(e -> button1ActionPerformed(e));
 
-            //---- label4 ----
-            label4.setText("Address");
+                //---- button2 ----
+                button2.setText("Delete");
 
-            GroupLayout panel1Layout = new GroupLayout(panel1);
-            panel1.setLayout(panel1Layout);
-            panel1Layout.setHorizontalGroup(
-                panel1Layout.createParallelGroup()
-                    .addGroup(GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
-                        .addGroup(panel1Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                            .addGroup(panel1Layout.createSequentialGroup()
-                                .addGap(16, 16, 16)
-                                .addGroup(panel1Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                                    .addComponent(label4, GroupLayout.Alignment.LEADING)
-                                    .addComponent(label2, GroupLayout.Alignment.LEADING)
-                                    .addComponent(label1, GroupLayout.Alignment.LEADING)
-                                    .addComponent(label3, GroupLayout.Alignment.LEADING))
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(panel1Layout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(textdob, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
-                                    .addComponent(textlno, GroupLayout.Alignment.LEADING)
-                                    .addComponent(textname, GroupLayout.Alignment.LEADING)
-                                    .addComponent(textaddr))
-                                .addGap(0, 38, Short.MAX_VALUE))
-                            .addGroup(panel1Layout.createSequentialGroup()
-                                .addGap(27, 27, 27)
+                //---- button3 ----
+                button3.setText("Edit");
+
+                //---- label4 ----
+                label4.setText("Address");
+
+                GroupLayout panel1Layout = new GroupLayout(panel1);
+                panel1.setLayout(panel1Layout);
+                panel1Layout.setHorizontalGroup(
+                    panel1Layout.createParallelGroup()
+                        .addGroup(GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
+                            .addGroup(panel1Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                .addGroup(panel1Layout.createSequentialGroup()
+                                    .addGap(16, 16, 16)
+                                    .addGroup(panel1Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                        .addComponent(label4, GroupLayout.Alignment.LEADING)
+                                        .addComponent(label2, GroupLayout.Alignment.LEADING)
+                                        .addComponent(label1, GroupLayout.Alignment.LEADING)
+                                        .addComponent(label3, GroupLayout.Alignment.LEADING))
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(panel1Layout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(textdob, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+                                        .addComponent(textlno, GroupLayout.Alignment.LEADING)
+                                        .addComponent(textname, GroupLayout.Alignment.LEADING)
+                                        .addComponent(textaddr))
+                                    .addGap(0, 38, Short.MAX_VALUE))
+                                .addGroup(panel1Layout.createSequentialGroup()
+                                    .addGap(27, 27, 27)
+                                    .addComponent(button1)
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                                    .addComponent(button2)
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                                    .addComponent(button3)))
+                            .addContainerGap(16, Short.MAX_VALUE))
+                );
+                panel1Layout.setVerticalGroup(
+                    panel1Layout.createParallelGroup()
+                        .addGroup(panel1Layout.createSequentialGroup()
+                            .addGap(22, 22, 22)
+                            .addGroup(panel1Layout.createParallelGroup()
+                                .addComponent(label1, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(textname, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addGroup(panel1Layout.createParallelGroup()
+                                .addComponent(label2)
+                                .addComponent(textlno, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addGroup(panel1Layout.createParallelGroup()
+                                .addComponent(label3)
+                                .addComponent(textdob, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panel1Layout.createParallelGroup()
+                                .addGroup(panel1Layout.createSequentialGroup()
+                                    .addGap(25, 25, 25)
+                                    .addComponent(label4))
+                                .addGroup(panel1Layout.createSequentialGroup()
+                                    .addGap(18, 18, 18)
+                                    .addComponent(textaddr, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                            .addGroup(panel1Layout.createParallelGroup()
                                 .addComponent(button1)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                                .addComponent(button2)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                                .addComponent(button3)))
-                        .addContainerGap(16, Short.MAX_VALUE))
+                                .addGroup(panel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                    .addComponent(button3)
+                                    .addComponent(button2)))
+                            .addGap(31, 31, 31))
+                );
+            }
+
+            //---- table1 ----
+            table1.setModel(new DefaultTableModel(
+                new Object[][] {
+                },
+                new String[] {
+                    "ID", "Name", "License No.", "DOB", "Address"
+                }
+            ) {
+                Class<?>[] columnTypes = new Class<?>[] {
+                    Integer.class, String.class, String.class, String.class, String.class
+                };
+                @Override
+                public Class<?> getColumnClass(int columnIndex) {
+                    return columnTypes[columnIndex];
+                }
+            });
+
+            GroupLayout abcpanelLayout = new GroupLayout(abcpanel);
+            abcpanel.setLayout(abcpanelLayout);
+            abcpanelLayout.setHorizontalGroup(
+                abcpanelLayout.createParallelGroup()
+                    .addGroup(GroupLayout.Alignment.TRAILING, abcpanelLayout.createSequentialGroup()
+                        .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(panel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(abcpanelLayout.createParallelGroup()
+                            .addComponent(bookingtitle)
+                            .addComponent(table1, GroupLayout.PREFERRED_SIZE, 458, GroupLayout.PREFERRED_SIZE))
+                        .addGap(33, 33, 33))
             );
-            panel1Layout.setVerticalGroup(
-                panel1Layout.createParallelGroup()
-                    .addGroup(panel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(panel1Layout.createParallelGroup()
-                            .addComponent(label1, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textname, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(panel1Layout.createParallelGroup()
-                            .addComponent(label2)
-                            .addComponent(textlno, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(panel1Layout.createParallelGroup()
-                            .addComponent(label3)
-                            .addComponent(textdob, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                        .addGroup(panel1Layout.createParallelGroup()
-                            .addGroup(panel1Layout.createSequentialGroup()
-                                .addGap(25, 25, 25)
-                                .addComponent(label4))
-                            .addGroup(panel1Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(textaddr, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                        .addGroup(panel1Layout.createParallelGroup()
-                            .addComponent(button1)
-                            .addGroup(panel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                .addComponent(button3)
-                                .addComponent(button2)))
-                        .addGap(31, 31, 31))
+            abcpanelLayout.setVerticalGroup(
+                abcpanelLayout.createParallelGroup()
+                    .addGroup(abcpanelLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(bookingtitle)
+                        .addGap(58, 58, 58)
+                        .addGroup(abcpanelLayout.createParallelGroup()
+                            .addComponent(table1, GroupLayout.PREFERRED_SIZE, 305, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(panel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(126, Short.MAX_VALUE))
             );
         }
-
-        //---- table1 ----
-        table1.setModel(new DefaultTableModel(
-            new Object[][] {
-            },
-            new String[] {
-                "ID", "Name", "License No.", "DOB", "Address"
-            }
-        ) {
-            Class<?>[] columnTypes = new Class<?>[] {
-                Integer.class, String.class, String.class, String.class, String.class
-            };
-            @Override
-            public Class<?> getColumnClass(int columnIndex) {
-                return columnTypes[columnIndex];
-            }
-        });
-
-        GroupLayout layout = new GroupLayout(this);
-        setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup()
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup()
-                        .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(panel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(table1, GroupLayout.PREFERRED_SIZE, 458, GroupLayout.PREFERRED_SIZE)
-                            .addGap(33, 33, 33))
-                        .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(bookingtitle)
-                            .addGap(307, 307, 307))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup()
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(19, 19, 19)
-                    .addComponent(bookingtitle)
-                    .addGap(58, 58, 58)
-                    .addGroup(layout.createParallelGroup()
-                        .addComponent(table1, GroupLayout.PREFERRED_SIZE, 305, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(panel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(126, Short.MAX_VALUE))
-        );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - unknown
+    private JPanel abcpanel;
     private JLabel bookingtitle;
     private JPanel panel1;
     private JLabel label1;
@@ -283,7 +284,7 @@ public class booking extends JPanel {
     public static void main(String[] args)
     {
         JFrame frame = new JFrame("booking");
-        frame.setContentPane(new booking().panel1);
+        frame.setContentPane(new booking().abcpanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);

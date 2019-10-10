@@ -4,10 +4,10 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {space :::x, par l {seq t {comp panel1:::p::p, space s:::p, comp table1:::p:458:p, space :p:33:p}, seq t {comp bookingtitle:::p::p, space :p:307:p}}}}"
+			"$horizontalGroup": "par l {seq t {space :::x, comp panel1:::p::p, space s:::p, par l {comp bookingtitle:::p::p, comp table1:::p:458:p}, space :p:33:p}}"
 			"$verticalGroup": "par l {seq l {space :p:19:p, comp bookingtitle:::p::p, space :p:58:p, par l {comp table1:::p:305:p, comp panel1:::p::p}, space ::126:x}}"
 		} ) {
-			name: "this"
+			name: "abcpanel"
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "bookingtitle"
 				"text": "Offender Booking"
