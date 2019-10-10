@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5a5d1a32-053f-46b3-a903-c09fc8842be0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/com/bca/booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/bca/booking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/bca/booking.jfd" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/bca/booking.jfd" afterDir="false" />
-    </list>
+    <list default="true" id="5a5d1a32-053f-46b3-a903-c09fc8842be0" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq t {space :::x, comp panel1:::p::p, space s:::p, par l {comp bookingtitle:::p::p, comp table1:::p:458:p}, space :p:33:p}}"
-			"$verticalGroup": "par l {seq l {space :p:19:p, comp bookingtitle:::p::p, space :p:58:p, par l {comp table1:::p:305:p, comp panel1:::p::p}, space ::126:x}}"
+			"$horizontalGroup": "par l {seq t {space :::x, comp panel1:::p::p, space s:::p, par l {comp bookingtitle:::p::p, comp scrollPane1::l:p:485:p}, space :::p}}"
+			"$verticalGroup": "par l {seq l {space :p:19:p, comp bookingtitle:::p::p, space ::78:x, par l {comp panel1:::p::p, comp scrollPane1:::p:326:p}, space :p:93:p}}"
 		} ) {
 			name: "abcpanel"
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -61,32 +61,35 @@ new FormModel {
 					name: "textaddr"
 				} )
 			} )
-			add( new FormComponent( "javax.swing.JTable" ) {
-				name: "table1"
-				"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector, new java.util.Vector {
-					add( "ID" )
-					add( "Name" )
-					add( "License No." )
-					add( "DOB" )
-					add( "Address" )
-				}, new java.util.Vector {
-					add( class java.lang.Integer )
-					add( class java.lang.String )
-					add( class java.lang.String )
-					add( class java.lang.String )
-					add( class java.lang.String )
-				}, new java.util.Vector {
-					add( null )
-					add( null )
-					add( null )
-					add( null )
-					add( null )
-				}, new java.util.Vector {
-					add( null )
-					add( null )
-					add( null )
-					add( null )
-					add( null )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				add( new FormComponent( "javax.swing.JTable" ) {
+					name: "table1"
+					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector, new java.util.Vector {
+						add( "ID" )
+						add( "Name" )
+						add( "License No." )
+						add( "DOB" )
+						add( "Address" )
+					}, new java.util.Vector {
+						add( class java.lang.Integer )
+						add( class java.lang.String )
+						add( class java.lang.String )
+						add( class java.lang.String )
+						add( class java.lang.String )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					} )
 				} )
 			} )
 		}, new FormLayoutConstraints( null ) {

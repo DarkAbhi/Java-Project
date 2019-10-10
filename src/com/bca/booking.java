@@ -115,6 +115,7 @@ public class booking {
         button3 = new JButton();
         label4 = new JLabel();
         textaddr = new JTextField();
+        scrollPane1 = new JScrollPane();
         table1 = new JTable();
 
         //======== abcpanel ========
@@ -217,22 +218,27 @@ public class booking {
                 );
             }
 
-            //---- table1 ----
-            table1.setModel(new DefaultTableModel(
-                new Object[][] {
-                },
-                new String[] {
-                    "ID", "Name", "License No.", "DOB", "Address"
-                }
-            ) {
-                Class<?>[] columnTypes = new Class<?>[] {
-                    Integer.class, String.class, String.class, String.class, String.class
-                };
-                @Override
-                public Class<?> getColumnClass(int columnIndex) {
-                    return columnTypes[columnIndex];
-                }
-            });
+            //======== scrollPane1 ========
+            {
+
+                //---- table1 ----
+                table1.setModel(new DefaultTableModel(
+                    new Object[][] {
+                    },
+                    new String[] {
+                        "ID", "Name", "License No.", "DOB", "Address"
+                    }
+                ) {
+                    Class<?>[] columnTypes = new Class<?>[] {
+                        Integer.class, String.class, String.class, String.class, String.class
+                    };
+                    @Override
+                    public Class<?> getColumnClass(int columnIndex) {
+                        return columnTypes[columnIndex];
+                    }
+                });
+                scrollPane1.setViewportView(table1);
+            }
 
             GroupLayout abcpanelLayout = new GroupLayout(abcpanel);
             abcpanel.setLayout(abcpanelLayout);
@@ -244,19 +250,19 @@ public class booking {
                         .addGap(18, 18, 18)
                         .addGroup(abcpanelLayout.createParallelGroup()
                             .addComponent(bookingtitle)
-                            .addComponent(table1, GroupLayout.PREFERRED_SIZE, 458, GroupLayout.PREFERRED_SIZE))
-                        .addGap(33, 33, 33))
+                            .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 485, GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())
             );
             abcpanelLayout.setVerticalGroup(
                 abcpanelLayout.createParallelGroup()
                     .addGroup(abcpanelLayout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addComponent(bookingtitle)
-                        .addGap(58, 58, 58)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                         .addGroup(abcpanelLayout.createParallelGroup()
-                            .addComponent(table1, GroupLayout.PREFERRED_SIZE, 305, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(panel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(126, Short.MAX_VALUE))
+                            .addComponent(panel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 326, GroupLayout.PREFERRED_SIZE))
+                        .addGap(93, 93, 93))
             );
         }
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
@@ -278,6 +284,7 @@ public class booking {
     private JButton button3;
     private JLabel label4;
     private JTextField textaddr;
+    private JScrollPane scrollPane1;
     private JTable table1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
