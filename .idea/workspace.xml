@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5a5d1a32-053f-46b3-a903-c09fc8842be0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/bca/booking.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/bca/booking.jfd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/collegeProject/com/bca/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/bca/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/collegeProject/com/bca/booking.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/collegeProject/com/bca/booking.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/bca/booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/bca/booking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/bca/booking.jfd" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/bca/booking.jfd" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,6 +44,13 @@
         <item name="@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="trafficoffenders: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="trafficoffenders: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="booking: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -153,7 +155,7 @@
       <workItem from="1570460438282" duration="6429000" />
       <workItem from="1570467562630" duration="759000" />
       <workItem from="1570468499570" duration="3733000" />
-      <workItem from="1570639977223" duration="7287000" />
+      <workItem from="1570639977223" duration="10587000" />
     </task>
     <servers />
   </component>

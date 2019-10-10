@@ -6,10 +6,8 @@ package com.bca;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.Vector;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 import javax.swing.border.*;
@@ -21,15 +19,56 @@ import javax.swing.table.*;
 public class booking extends JPanel {
     public booking() {
         initComponents();
+        table_update();
     }
+
+    Connection connect;
+    PreparedStatement insert;
+
+    private void table_update() {
+        int c;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            String userName = "abhi";
+            String password = "abhi123";
+            String url = "jdbc:MySQL://localhost/trafficoffenders";
+
+            connect = DriverManager.getConnection (url, userName, password);
+            insert = connect.prepareStatement("select * from booking");
+
+            ResultSet rs = insert.executeQuery();
+            ResultSetMetaData rsmd = rs.getMetaData();
+            c = rsmd.getColumnCount();
+
+
+            DefaultTableModel DFTM = (DefaultTableModel)table1.getModel();
+            DFTM.setRowCount(0);
+
+            while (rs.next()) {
+                Vector vec = new Vector();
+                for (int i=1;i<=c;i++) {
+                    vec.add(rs.getString("id"));
+                    vec.add(rs.getString("offendername"));
+                    vec.add(rs.getString("licensenumber"));
+                    vec.add(rs.getString("dob"));
+                    vec.add(rs.getString("address"));
+                }
+                DFTM.addRow(vec);
+            }
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+
 
     private void button1ActionPerformed(ActionEvent e) {
         String offendername = textname.getText();
         String licensenumber = textlno.getText();
         String dob = textdob.getText();
         String address = textaddr.getText();
-        Connection connect;
-        PreparedStatement insert;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
@@ -47,6 +86,11 @@ public class booking extends JPanel {
 
             JOptionPane.showMessageDialog(this,"Record Added");
 
+            textname.setText("");
+            textlno.setText("");
+            textdob.setText("");
+            textaddr.setText("");
+            textname.requestFocus();
 
         } catch (ClassNotFoundException | SQLException ex) {
             ex.printStackTrace();
@@ -72,13 +116,12 @@ public class booking extends JPanel {
         table1 = new JTable();
 
         //======== this ========
-        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new
-        javax . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax
-        . swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java
-        . awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt
-        . Color .red ) , getBorder () ) );  addPropertyChangeListener( new java. beans .
-        PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r" .
-        equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
+        . EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax
+        . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,
+        12 ), java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans
+        . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .
+        getPropertyName () )) throw new RuntimeException( ); }} );
 
         //---- bookingtitle ----
         bookingtitle.setText("Offender Booking");
@@ -214,7 +257,7 @@ public class booking extends JPanel {
                     .addGroup(layout.createParallelGroup()
                         .addComponent(table1, GroupLayout.PREFERRED_SIZE, 305, GroupLayout.PREFERRED_SIZE)
                         .addComponent(panel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(121, Short.MAX_VALUE))
+                    .addContainerGap(126, Short.MAX_VALUE))
         );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
@@ -239,7 +282,7 @@ public class booking extends JPanel {
 
     public static void main(String[] args)
     {
-        JFrame frame = new JFrame("bookin");
+        JFrame frame = new JFrame("booking");
         frame.setContentPane(new booking().panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();

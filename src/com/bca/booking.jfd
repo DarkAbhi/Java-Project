@@ -5,7 +5,7 @@ new FormModel {
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 			"$horizontalGroup": "par l {seq {space :::x, par l {seq t {comp panel1:::p::p, space s:::p, comp table1:::p:458:p, space :p:33:p}, seq t {comp bookingtitle:::p::p, space :p:307:p}}}}"
-			"$verticalGroup": "par l {seq l {space :p:19:p, comp bookingtitle:::p::p, space :p:58:p, par l {comp table1:::p:305:p, comp panel1:::p::p}, space ::121:x}}"
+			"$verticalGroup": "par l {seq l {space :p:19:p, comp bookingtitle:::p::p, space :p:58:p, par l {comp table1:::p:305:p, comp panel1:::p::p}, space ::126:x}}"
 		} ) {
 			name: "this"
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -91,7 +91,7 @@ new FormModel {
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 50, 55 )
-			"size": new java.awt.Dimension( 835, 535 )
+			"size": new java.awt.Dimension( 835, 540 )
 		} )
 	}
 }
