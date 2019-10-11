@@ -69,32 +69,38 @@ public class booking {
         String licensenumber = textlno.getText();
         String dob = textdob.getText();
         String address = textaddr.getText();
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
 
-            String userName = "abhi";
-            String password = "abhi123";
-            String url = "jdbc:MySQL://localhost/trafficoffenders";
-            connect = DriverManager.getConnection (url, userName, password);
+        if (offendername.isEmpty() || licensenumber.isEmpty() || dob.isEmpty() || address.isEmpty()) {
+            JOptionPane.showMessageDialog(abcpanel,"Fill in all the details!");
+        }
+        else {
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
 
-            insert = connect.prepareStatement("insert into booking(offendername,licensenumber,dob,address)values(?,?,?,?)");
-            insert.setString(1,offendername);
-            insert.setString(2,licensenumber);
-            insert.setString(3,dob);
-            insert.setString(4,address);
-            insert.executeUpdate();
+                String userName = "abhi";
+                String password = "abhi123";
+                String url = "jdbc:MySQL://localhost/trafficoffenders";
+                connect = DriverManager.getConnection (url, userName, password);
 
-            JOptionPane.showMessageDialog(abcpanel,"Record Added");
-            table_update();
+                insert = connect.prepareStatement("insert into booking(offendername,licensenumber,dob,address)values(?,?,?,?)");
+                insert.setString(1,offendername);
+                insert.setString(2,licensenumber);
+                insert.setString(3,dob);
+                insert.setString(4,address);
+                insert.executeUpdate();
 
-            textname.setText("");
-            textlno.setText("");
-            textdob.setText("");
-            textaddr.setText("");
-            textname.requestFocus();
+                JOptionPane.showMessageDialog(abcpanel,"Record Added");
+                table_update();
 
-        } catch (ClassNotFoundException | SQLException ex) {
-            ex.printStackTrace();
+                textname.setText("");
+                textlno.setText("");
+                textdob.setText("");
+                textaddr.setText("");
+                textname.requestFocus();
+
+            } catch (ClassNotFoundException | SQLException ex) {
+                ex.printStackTrace();
+            }
         }
     }
 
@@ -113,55 +119,17 @@ public class booking {
         DefaultTableModel DFTM = (DefaultTableModel)table1.getModel();
         int selectedIndex = table1.getSelectedRow();
 
-        try {
-            int id = Integer.parseInt(DFTM.getValueAt(selectedIndex,0).toString());
-            String offendername = textname.getText();
-            String licensenumber = textlno.getText();
-            String dob = textdob.getText();
-            String address = textaddr.getText();
-
-            Class.forName("com.mysql.cj.jdbc.Driver");
-
-            String userName = "abhi";
-            String password = "abhi123";
-            String url = "jdbc:MySQL://localhost/trafficoffenders";
-            connect = DriverManager.getConnection (url, userName, password);
-
-            insert = connect.prepareStatement("update booking set offendername=?,licensenumber=?,dob=?,address=? where id=?");
-            insert.setString(1,offendername);
-            insert.setString(2,licensenumber);
-            insert.setString(3,dob);
-            insert.setString(4,address);
-            insert.setInt(5,id);
-
-
-            insert.executeUpdate();
-
-            JOptionPane.showMessageDialog(abcpanel,"Record Updated");
-            table_update();
-
-            textname.setText("");
-            textlno.setText("");
-            textdob.setText("");
-            textaddr.setText("");
-            textname.requestFocus();
-
-        } catch (ClassNotFoundException | SQLException ex) {
-            ex.printStackTrace();
+        if(selectedIndex == -1) {
+            JOptionPane.showMessageDialog(abcpanel,"Select a record first to Edit!");
         }
+        else {
+            try {
+                int id = Integer.parseInt(DFTM.getValueAt(selectedIndex,0).toString());
+                String offendername = textname.getText();
+                String licensenumber = textlno.getText();
+                String dob = textdob.getText();
+                String address = textaddr.getText();
 
-    }
-
-    private void button2ActionPerformed(ActionEvent e) {
-        DefaultTableModel DFTM = (DefaultTableModel)table1.getModel();
-        int selectedIndex = table1.getSelectedRow();
-
-        try {
-            int id = Integer.parseInt(DFTM.getValueAt(selectedIndex,0).toString());
-
-            int dialogResult = JOptionPane.showConfirmDialog(null, "Do you want to delete it?","Warning",JOptionPane.YES_NO_OPTION);
-
-            if(dialogResult == JOptionPane.YES_OPTION) {
                 Class.forName("com.mysql.cj.jdbc.Driver");
 
                 String userName = "abhi";
@@ -169,14 +137,17 @@ public class booking {
                 String url = "jdbc:MySQL://localhost/trafficoffenders";
                 connect = DriverManager.getConnection (url, userName, password);
 
-                insert = connect.prepareStatement("delete from booking where id=?");
-                insert.setInt(1,id);
+                insert = connect.prepareStatement("update booking set offendername=?,licensenumber=?,dob=?,address=? where id=?");
+                insert.setString(1,offendername);
+                insert.setString(2,licensenumber);
+                insert.setString(3,dob);
+                insert.setString(4,address);
+                insert.setInt(5,id);
+
+
                 insert.executeUpdate();
 
-                insert = connect.prepareStatement("ALTER TABLE booking AUTO_INCREMENT=1");
-                insert.executeUpdate();
-
-                JOptionPane.showMessageDialog(abcpanel,"Record Deleted");
+                JOptionPane.showMessageDialog(abcpanel,"Record Updated");
                 table_update();
 
                 textname.setText("");
@@ -184,9 +155,53 @@ public class booking {
                 textdob.setText("");
                 textaddr.setText("");
                 textname.requestFocus();
+
+            } catch (ClassNotFoundException | SQLException ex) {
+                ex.printStackTrace();
             }
-        } catch (ClassNotFoundException | SQLException ex) {
-            ex.printStackTrace();
+        }
+    }
+
+    private void button2ActionPerformed(ActionEvent e) {
+        DefaultTableModel DFTM = (DefaultTableModel)table1.getModel();
+        int selectedIndex = table1.getSelectedRow();
+
+        if(selectedIndex == -1) {
+            JOptionPane.showMessageDialog(abcpanel,"Select a record first to delete!");
+        }
+        else {
+            try {
+                int id = Integer.parseInt(DFTM.getValueAt(selectedIndex,0).toString());
+
+                int dialogResult = JOptionPane.showConfirmDialog(null, "Do you want to delete it?","Warning",JOptionPane.YES_NO_OPTION);
+
+                if(dialogResult == JOptionPane.YES_OPTION) {
+                    Class.forName("com.mysql.cj.jdbc.Driver");
+
+                    String userName = "abhi";
+                    String password = "abhi123";
+                    String url = "jdbc:MySQL://localhost/trafficoffenders";
+                    connect = DriverManager.getConnection (url, userName, password);
+
+                    insert = connect.prepareStatement("delete from booking where id=?");
+                    insert.setInt(1,id);
+                    insert.executeUpdate();
+
+                    insert = connect.prepareStatement("ALTER TABLE booking AUTO_INCREMENT=1");
+                    insert.executeUpdate();
+
+                    JOptionPane.showMessageDialog(abcpanel,"Record Deleted");
+                    table_update();
+
+                    textname.setText("");
+                    textlno.setText("");
+                    textdob.setText("");
+                    textaddr.setText("");
+                    textname.requestFocus();
+                }
+            } catch (ClassNotFoundException | SQLException ex) {
+                ex.printStackTrace();
+            }
         }
     }
 
@@ -212,16 +227,16 @@ public class booking {
 
         //======== abcpanel ========
         {
-            abcpanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
-            EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing
-            . border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ),
-            java. awt. Color. red) ,abcpanel. getBorder( )) ); abcpanel. addPropertyChangeListener (new java. beans. PropertyChangeListener( )
-            { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () ))
-            throw new RuntimeException( ); }} );
+            abcpanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
+            . EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border. TitledBorder. CENTER, javax
+            . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069al\u006fg" ,java .awt .Font .BOLD ,
+            12 ), java. awt. Color. red) ,abcpanel. getBorder( )) ); abcpanel. addPropertyChangeListener (new java. beans
+            . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062or\u0064er" .equals (e .
+            getPropertyName () )) throw new RuntimeException( ); }} );
 
             //---- bookingtitle ----
             bookingtitle.setText("Offender Booking");
-            bookingtitle.setFont(new Font("Times New Roman", Font.BOLD, 20));
+            bookingtitle.setFont(new Font("Bahnschrift", Font.BOLD, 28));
 
             //======== panel1 ========
             {
@@ -345,21 +360,24 @@ public class booking {
             abcpanel.setLayout(abcpanelLayout);
             abcpanelLayout.setHorizontalGroup(
                 abcpanelLayout.createParallelGroup()
-                    .addGroup(GroupLayout.Alignment.TRAILING, abcpanelLayout.createSequentialGroup()
+                    .addGroup(abcpanelLayout.createSequentialGroup()
                         .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(panel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addGroup(abcpanelLayout.createParallelGroup()
-                            .addComponent(bookingtitle)
-                            .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 485, GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())
+                            .addGroup(GroupLayout.Alignment.TRAILING, abcpanelLayout.createSequentialGroup()
+                                .addComponent(panel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 485, GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
+                            .addGroup(GroupLayout.Alignment.TRAILING, abcpanelLayout.createSequentialGroup()
+                                .addComponent(bookingtitle)
+                                .addGap(286, 286, 286))))
             );
             abcpanelLayout.setVerticalGroup(
                 abcpanelLayout.createParallelGroup()
                     .addGroup(abcpanelLayout.createSequentialGroup()
-                        .addGap(19, 19, 19)
+                        .addGap(43, 43, 43)
                         .addComponent(bookingtitle)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                         .addGroup(abcpanelLayout.createParallelGroup()
                             .addComponent(panel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                             .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 326, GroupLayout.PREFERRED_SIZE))
