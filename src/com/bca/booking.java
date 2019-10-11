@@ -152,8 +152,39 @@ public class booking {
 
     }
 
-    private void scrollPane1MouseClicked(MouseEvent e) {
-        // TODO add your code here
+    private void button2ActionPerformed(ActionEvent e) {
+        DefaultTableModel DFTM = (DefaultTableModel)table1.getModel();
+        int selectedIndex = table1.getSelectedRow();
+
+        try {
+            int id = Integer.parseInt(DFTM.getValueAt(selectedIndex,0).toString());
+
+            int dialogResult = JOptionPane.showConfirmDialog(null, "Do you want to delete it?","Warning",JOptionPane.YES_NO_OPTION);
+
+            if(dialogResult == JOptionPane.YES_OPTION) {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+
+                String userName = "abhi";
+                String password = "abhi123";
+                String url = "jdbc:MySQL://localhost/trafficoffenders";
+                connect = DriverManager.getConnection (url, userName, password);
+
+                insert = connect.prepareStatement("delete from booking where id=?");
+                insert.setInt(1,id);
+                insert.executeUpdate();
+
+                JOptionPane.showMessageDialog(abcpanel,"Record Deleted");
+                table_update();
+
+                textname.setText("");
+                textlno.setText("");
+                textdob.setText("");
+                textaddr.setText("");
+                textname.requestFocus();
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
     private void initComponents() {
@@ -178,13 +209,12 @@ public class booking {
 
         //======== abcpanel ========
         {
-            abcpanel.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new
-            javax.swing.border.EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax
-            .swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java
-            .awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt
-            .Color.red),abcpanel. getBorder()));abcpanel. addPropertyChangeListener(new java.beans.
-            PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("bord\u0065r".
-            equals(e.getPropertyName()))throw new RuntimeException();}});
+            abcpanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
+            EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing
+            . border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ),
+            java. awt. Color. red) ,abcpanel. getBorder( )) ); abcpanel. addPropertyChangeListener (new java. beans. PropertyChangeListener( )
+            { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () ))
+            throw new RuntimeException( ); }} );
 
             //---- bookingtitle ----
             bookingtitle.setText("Offender Booking");
@@ -210,6 +240,7 @@ public class booking {
 
                 //---- button2 ----
                 button2.setText("Delete");
+                button2.addActionListener(e -> button2ActionPerformed(e));
 
                 //---- button3 ----
                 button3.setText("Edit");
@@ -281,12 +312,6 @@ public class booking {
 
             //======== scrollPane1 ========
             {
-                scrollPane1.addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseClicked(MouseEvent e) {
-                        scrollPane1MouseClicked(e);
-                    }
-                });
 
                 //---- table1 ----
                 table1.setModel(new DefaultTableModel(

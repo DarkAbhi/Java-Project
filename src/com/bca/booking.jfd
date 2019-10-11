@@ -48,6 +48,7 @@ new FormModel {
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "button2"
 					"text": "Delete"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button2ActionPerformed", true ) )
 				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "button3"
@@ -64,7 +65,6 @@ new FormModel {
 			} )
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane1"
-				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "scrollPane1MouseClicked", true ) )
 				add( new FormComponent( "javax.swing.JTable" ) {
 					name: "table1"
 					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector, new java.util.Vector {
