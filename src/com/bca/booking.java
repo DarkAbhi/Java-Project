@@ -173,6 +173,9 @@ public class booking {
                 insert.setInt(1,id);
                 insert.executeUpdate();
 
+                insert = connect.prepareStatement("ALTER TABLE booking AUTO_INCREMENT=1");
+                insert.executeUpdate();
+
                 JOptionPane.showMessageDialog(abcpanel,"Record Deleted");
                 table_update();
 
