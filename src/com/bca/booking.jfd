@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {space :::x, par l {seq t {comp panel1:::p::p, space s:::p, comp scrollPane1:::p:485:p, space :::p}, seq t {comp bookingtitle:::p::p, space :p:286:p}}}}"
-			"$verticalGroup": "par l {seq l {space :p:43:p, comp bookingtitle:::p::p, space ::44:x, par l {comp panel1:::p::p, comp scrollPane1:::p:326:p}, space :p:93:p}}"
+			"$horizontalGroup": "par l {seq {space :::x, par l {seq t {comp panel1:::p::p, space s:::p, comp scrollPane1:::p:485:p, space :::p}, seq t {comp bookingtitle:::p::p, space :p:286:p}, seq t {comp button4:::p::p, space :p:160:p}}}}"
+			"$verticalGroup": "par l {seq l {space :p:43:p, comp bookingtitle:::p::p, space ::34:x, par l {comp panel1:::p::p, comp scrollPane1:::p:326:p}, space s:::p, comp button4:::p::p, space :p:55:p}}"
 		} ) {
 			name: "abcpanel"
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -95,8 +95,13 @@ new FormModel {
 					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "table1MouseClicked", true ) )
 				} )
 			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button4"
+				"text": "Click For More Information"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button4ActionPerformed", true ) )
+			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 50, 55 )
+			"location": new java.awt.Point( 35, 30 )
 			"size": new java.awt.Dimension( 835, 540 )
 		} )
 	}

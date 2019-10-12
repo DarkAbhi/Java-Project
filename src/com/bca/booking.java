@@ -24,6 +24,7 @@ public class booking {
 
     Connection connect;
     PreparedStatement insert;
+    JFrame frame = new JFrame("booking");
 
     private void table_update() {
         int c;
@@ -205,6 +206,12 @@ public class booking {
         }
     }
 
+    private void button4ActionPerformed(ActionEvent e) {
+        frame.dispose();
+        addinfoform addf = new addinfoform();
+        addf.createForm2();
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - unknown
@@ -224,15 +231,17 @@ public class booking {
         textaddr = new JTextField();
         scrollPane1 = new JScrollPane();
         table1 = new JTable();
+        button4 = new JButton();
 
         //======== abcpanel ========
         {
-            abcpanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
-            . EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border. TitledBorder. CENTER, javax
-            . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069al\u006fg" ,java .awt .Font .BOLD ,
-            12 ), java. awt. Color. red) ,abcpanel. getBorder( )) ); abcpanel. addPropertyChangeListener (new java. beans
-            . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062or\u0064er" .equals (e .
-            getPropertyName () )) throw new RuntimeException( ); }} );
+            abcpanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
+            swing. border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border
+            . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog"
+            ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,abcpanel. getBorder
+            ( )) ); abcpanel. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
+            .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException
+            ( ); }} );
 
             //---- bookingtitle ----
             bookingtitle.setText("Offender Booking");
@@ -356,6 +365,10 @@ public class booking {
                 scrollPane1.setViewportView(table1);
             }
 
+            //---- button4 ----
+            button4.setText("Click For More Information");
+            button4.addActionListener(e -> button4ActionPerformed(e));
+
             GroupLayout abcpanelLayout = new GroupLayout(abcpanel);
             abcpanel.setLayout(abcpanelLayout);
             abcpanelLayout.setHorizontalGroup(
@@ -370,18 +383,23 @@ public class booking {
                                 .addContainerGap())
                             .addGroup(GroupLayout.Alignment.TRAILING, abcpanelLayout.createSequentialGroup()
                                 .addComponent(bookingtitle)
-                                .addGap(286, 286, 286))))
+                                .addGap(286, 286, 286))
+                            .addGroup(GroupLayout.Alignment.TRAILING, abcpanelLayout.createSequentialGroup()
+                                .addComponent(button4)
+                                .addGap(160, 160, 160))))
             );
             abcpanelLayout.setVerticalGroup(
                 abcpanelLayout.createParallelGroup()
                     .addGroup(abcpanelLayout.createSequentialGroup()
                         .addGap(43, 43, 43)
                         .addComponent(bookingtitle)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                         .addGroup(abcpanelLayout.createParallelGroup()
                             .addComponent(panel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                             .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 326, GroupLayout.PREFERRED_SIZE))
-                        .addGap(93, 93, 93))
+                        .addGap(18, 18, 18)
+                        .addComponent(button4)
+                        .addGap(55, 55, 55))
             );
         }
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
@@ -405,16 +423,20 @@ public class booking {
     private JTextField textaddr;
     private JScrollPane scrollPane1;
     private JTable table1;
+    private JButton button4;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
-    public static void main(String[] args)
-    {
-        JFrame frame = new JFrame("booking");
+    public void createForm() {
         frame.setContentPane(new booking().abcpanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
+    }
+
+    public static void main(String args[]) {
+        booking b = new booking();
+        b.createForm();
     }
 }
