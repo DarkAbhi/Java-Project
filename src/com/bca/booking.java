@@ -19,6 +19,7 @@ import javax.swing.table.*;
 public class booking {
     public booking() {
         initComponents();
+        defaultContent();
         table_update();
     }
 
@@ -63,7 +64,22 @@ public class booking {
         }
     }
 
+    public void defaultContent() {
+        // Test machines will not have the DB. So add it.
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
 
+            String userName = "abhi";
+            String password = "abhi123";
+            String url = "jdbc:MySQL://localhost/trafficoffenders";
+
+            connect = DriverManager.getConnection (url, userName, password);
+            insert = connect.prepareStatement("CREATE TABLE IF NOT EXISTS `booking` (`id` int NOT NULL AUTO_INCREMENT,`offendername` varchar(255) NOT NULL,`licensenumber` varchar(255) NOT NULL,`dob` date NOT NULL,`address` text NOT NULL,PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=latin1;");
+            insert.executeUpdate();
+        } catch (ClassNotFoundException | SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
 
     private void button1ActionPerformed(ActionEvent e) {
         String offendername = textname.getText();
@@ -235,13 +251,13 @@ public class booking {
 
         //======== abcpanel ========
         {
-            abcpanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
-            swing. border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border
-            . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog"
-            ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,abcpanel. getBorder
-            ( )) ); abcpanel. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
-            .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException
-            ( ); }} );
+            abcpanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax
+            . swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing
+            . border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .
+            Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
+            ) ,abcpanel. getBorder( )) ); abcpanel. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override
+            public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName (
+            ) )) throw new RuntimeException( ); }} );
 
             //---- bookingtitle ----
             bookingtitle.setText("Offender Booking");
